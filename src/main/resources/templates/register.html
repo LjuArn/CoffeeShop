@@ -1,37 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Coffee Shop Application</title>
-    <link rel="stylesheet" href="/css/reset-css.css"/>
-    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/css/style.css"/>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head th:replace="fragments/commans::head">
 </head>
 <body class="bg-secondary">
-<header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-info rounded">
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Add Order</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Logout</a>
-                </li>
-            </ul>
-            <img width="50px" src="/images/coffee.png" alt="Coffee image">
-        </div>
-    </nav>
+<header th:replace="fragments/commans::nav">
 </header>
 <main role="main" class="bg-secondary">
     <div class="jumbotron">
@@ -41,18 +15,24 @@
                     Register</strong></h1>
         </div>
         <div class="container bg-blur rounded p-5 mt-5 w-75">
-            <form action="/" method=""
+            <form
+                    th:action="@{/users/register}"
+                    th:method="post"
+                    th:object="${userRegisterBindingModel}">
+
                   class=" text-center text-light">
                 <div class="form-group row">
-                    <label for="username" class="col-sm-2 col-form-label">Username</label>
+                    <label  th:field="*{username}" th:errorclass="is-invalid"
+                           class="col-sm-2 col-form-label">Username</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="username"
                                aria-describedby="usernameHelpInline" placeholder="Username">
-                        <small id="usernameHelpInline" class="bg-danger text-light rounded">
+                        <small id="usernameHelpInline" class="invalid-feedback bg-danger text-light rounded">
                             Username length must be between 5 and 20 characters.
                         </small>
                     </div>
                 </div>
+
                 <div class="form-group row">
                     <label for="firstName" class="col-sm-2 col-form-label">First name</label>
                     <div class="col-sm-10">
@@ -60,6 +40,7 @@
                                aria-describedby="firstNameHelpInline" placeholder="First name">
                     </div>
                 </div>
+
                 <div class="form-group row">
                     <label for="lastName" class="col-sm-2 col-form-label">Last name</label>
                     <div class="col-sm-10">
@@ -70,6 +51,7 @@
                         </small>
                     </div>
                 </div>
+
                 <div class="form-group row">
                     <label for="email" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
@@ -80,6 +62,7 @@
                         </small>
                     </div>
                 </div>
+
                 <div class="form-group row">
                     <label for="password" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
@@ -90,6 +73,7 @@
                         </small>
                     </div>
                 </div>
+
                 <div class="form-group row">
                     <label for="confirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
                     <div class="col-sm-10">
@@ -100,14 +84,14 @@
                         </small>
                     </div>
                 </div>
+
                 <button type="submit" class="btn btn-info w-50">Register</button>
             </form>
             <hr class="bg-light">
         </div>
     </div>
 </main>
-<footer class="container">
-    <p>&copy;SoftUni Spring Team 2021. All rights reserved.</p>
+<footer th:replace="fragments/commans::footer">
 </footer>
 </body>
 </html>
