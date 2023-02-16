@@ -28,6 +28,12 @@ spring:
       hibernate:
         format_sql: true
     defer-datasource-initialization: true
+
+logging:
+  level:
+    blog: WARN
+    org: WARN
+    org.hibernate.SQL: DEBUG
   #Cloudinary Properties
   #cloudinary:
   #api-key:
