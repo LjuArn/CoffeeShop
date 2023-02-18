@@ -6,7 +6,7 @@ import org.springframework.web.context.annotation.SessionScope;
 
 
 @Component
-@SessionScope
+@SessionScope//да се пази една сесия
 public class CurrentUser {
 
     private Long id;

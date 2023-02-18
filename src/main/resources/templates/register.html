@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       lang="en">
-<head th:replace="fragments/commans::head">
+<head th:replace="~{fragments/commans::head}">
 </head>
 <body class="bg-secondary">
-<header th:replace="fragments/commans::nav">
+<header th:replace="~{fragments/commans::nav}">
 </header>
 <main role="main" class="bg-secondary">
     <div class="jumbotron">
@@ -90,7 +90,7 @@
         </div>
     </div>
 </main>
-<footer th:replace="fragments/commans::footer">
+<footer th:replace="~{fragments/commans::footer}">
 </footer>
 </body>
 </html>

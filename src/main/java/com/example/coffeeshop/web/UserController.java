@@ -63,8 +63,17 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(Model model) {
-        model.addAttribute("isNotExist", false);
+
+        if(!model.containsAttribute("isNotFound")) {
+            model.addAttribute("isNotFound", false);
+        }
         return "login";
+    }
+
+
+    @ModelAttribute
+    public UserLoginBindingModel userLoginBindingModel(){
+        return new UserLoginBindingModel();
     }
 
 
@@ -89,16 +98,16 @@ public class UserController {
 
 
         if(user==null){
-            redirectAttributes
-                    .addFlashAttribute("isNotExist", true)
-                    .addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel",
-                            bindingResult)
-                    .addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
-            return "redirect:login";
+                redirectAttributes
+                .addFlashAttribute("isNotFound", true)
+                .addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel",
+                bindingResult)
+                .addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
+                return "redirect:login";
 
-        }
+                }
 
-        userService.loginUser(user.getId(), user.getUsername());
+       userService.loginUser(user.getId(), user.getUsername());
 
         return "redirect:/";
     }
@@ -111,3 +120,4 @@ public class UserController {
     }
 
 }
+

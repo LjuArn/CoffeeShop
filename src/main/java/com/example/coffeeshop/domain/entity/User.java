@@ -1,8 +1,8 @@
 package com.example.coffeeshop.domain.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -19,7 +19,19 @@ public class User extends BaseEntity{
     @Column(unique = true, nullable = false)
     private String email;
 
+    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
+    Set<Order> orderSet;
+
     public User() {
+    }
+
+    public Set<Order> getOrderSet() {
+        return orderSet;
+    }
+
+    public User setOrderSet(Set<Order> orderSet) {
+        this.orderSet = orderSet;
+        return this;
     }
 
     public String getUsername() {
