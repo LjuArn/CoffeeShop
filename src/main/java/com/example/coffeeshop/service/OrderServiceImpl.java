@@ -38,6 +38,8 @@ public class OrderServiceImpl implements OrderService {
 
        Order order = modelMapper.map(orderAddServiceModel, Order.class);
 
+
+      //????????????? orderAddServiceModel.setCategory(categoryService.findByCategoriNameEnum(orderAddServiceModel.getCategory()))
        order.setEmployee(userService.findById(currentUser.getId()));
        order.setCategory(categoryService.findByCategoriNameEnum(orderAddServiceModel.getCategory()));
 
