@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
-    private  CurrentUser currentUser;
+    private final CurrentUser currentUser;
 
     public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, CurrentUser currentUser) {
         this.userRepository = userRepository;
@@ -33,10 +33,6 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    @Override
-    public void logOut() {
-        currentUser.setId(null).setUsername(null);
-    }
 
     @Override
     public UserServiceModel findUserByUsernameAndPassword(String username, String password) {
@@ -52,7 +48,12 @@ public class UserServiceImpl implements UserService {
     }
 
 
+    @Override
+    public void logOut() {
+        currentUser.setId(null).setUsername(null);
+    }
 
+//_________________________________________________________________________________________
 
 
     @Override
