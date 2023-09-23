@@ -34,8 +34,8 @@ logging:
     blog: WARN
     org: WARN
     org.hibernate.SQL: DEBUG
-  #Cloudinary Properties
-  #cloudinary:
+#Cloudinary Properties
+#cloudinary:
   #api-key:
   #api-secret:
   #cloud-name:
