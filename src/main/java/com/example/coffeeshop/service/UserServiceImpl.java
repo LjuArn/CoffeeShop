@@ -43,7 +43,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void loginUser(Long id, String username) {
-
         currentUser.setId(id).setUsername(username);
     }
 

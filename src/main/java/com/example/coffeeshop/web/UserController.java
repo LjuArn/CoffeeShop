@@ -47,11 +47,8 @@ public class UserController {
         if (bindingResult.hasErrors() ||
                 !userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword())
         ) {
-            redirectAttributes
-                    .addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel);
-            redirectAttributes
-                    .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel",
-                            bindingResult);
+            redirectAttributes.addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel", bindingResult);
             return "redirect:register";
 
         }
@@ -65,7 +62,7 @@ public class UserController {
     @GetMapping("/login")
     public String login(Model model) {
 
-        if(!model.containsAttribute("isNotFound")) {
+        if (!model.containsAttribute("isNotFound")) {
             model.addAttribute("isNotFound", false);
         }
         return "login";
@@ -73,7 +70,7 @@ public class UserController {
 
 
     @ModelAttribute
-    public UserLoginBindingModel userLoginBindingModel(){
+    public UserLoginBindingModel userLoginBindingModel() {
         return new UserLoginBindingModel();
     }
 
@@ -98,17 +95,16 @@ public class UserController {
                         userLoginBindingModel.getPassword());
 
 
-        if(user==null){
-                redirectAttributes
-                .addFlashAttribute("isNotFound", true)
-                .addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel",
-                bindingResult)
-                .addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
-                return "redirect:login";
+        if (user == null) {
+            redirectAttributes
+                    .addFlashAttribute("isNotFound", true)
+                    .addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel",
+                            bindingResult)
+                    .addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
+            return "redirect:login";
+        }
 
-                }
-
-       userService.loginUser(user.getId(), user.getUsername());
+        userService.loginUser(user.getId(), user.getUsername());
 
         return "redirect:/";
     }
