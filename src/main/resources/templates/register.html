@@ -32,6 +32,10 @@
                             Username length must be between 5 and 20 characters.
                         </small>
                     </div>
+
+                    <small th:if="${isNameExist}" id="usernameUniqueError"
+                           class="bg-danger rounded">Username is already occupied !!!!!!!!</small>
+
                 </div>
 
                 <div class="form-group row">

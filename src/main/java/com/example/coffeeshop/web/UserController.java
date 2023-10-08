@@ -52,6 +52,18 @@ public class UserController {
             return "redirect:register";
 
         }
+
+        boolean isNameExist = userService.isNameExistMetod(userRegisterBindingModel.getUsername());
+
+        if(isNameExist){
+            redirectAttributes.addFlashAttribute("isNameExist", true)
+                    .addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel)
+                    .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBidingModel",
+                            bindingResult);
+            return "redirect:register";
+        }
+
+
         userService.registerUser(modelMapper.map(userRegisterBindingModel, UserServiceModel.class));
 
         return "redirect:login";

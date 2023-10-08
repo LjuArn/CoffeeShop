@@ -15,4 +15,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u from User u order by size(u.orderSet) DESC")
     List<User> findAllByOrderByOrdersDescending();
+
+Optional<User> existsByUsername(String username);
+
+
+
+
 }

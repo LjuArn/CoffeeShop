@@ -19,4 +19,6 @@ public interface UserService {
     User findById(Long id);
 
     List<UserViewModel> findAllUsersAndCountOrdersDes();
+
+    boolean isNameExistMetod(String username);
 }

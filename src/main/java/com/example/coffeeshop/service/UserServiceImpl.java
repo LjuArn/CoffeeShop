@@ -75,4 +75,10 @@ public class UserServiceImpl implements UserService {
                 })
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public boolean isNameExistMetod(String username) {
+        return userRepository.existsByUsername(username)
+                .isPresent();
+    }
 }
